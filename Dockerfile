@@ -12,6 +12,9 @@ COPY . /app
 # Install the required packages
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+# Fix for markupsafe module issue
+RUN pip3 install --upgrade --force-reinstall markupsafe
+
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
 
