@@ -8,11 +8,11 @@ COPY . /app
 
 WORKDIR /app
 
+# Upgrade pip
+RUN pip install --upgrade pip
+
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
-
-# Fix for markupsafe module issue
-RUN pip install --upgrade --force-reinstall markupsafe
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
