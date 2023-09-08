@@ -1,7 +1,9 @@
 FROM ubuntu:16.04
-RUN apt-get update && apt-get install -y python python-pip
-RUN pip install --upgrade pip
-RUN pip install --no-cache-dir flask
+RUN apt-get update && apt-get install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get update && apt-get install -y python3.6 python3-pip
+RUN python3.6 -m pip install --upgrade pip
+RUN python3.6 -m pip install --no-cache-dir flask
 COPY app.py /opt/
 
-ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0 --port=8080
+ENTRYPOINT FLASK_APP=/opt/app.py python3.6 -m flask run --host=0.0.0.0 --port=8080
