@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install -y python python-pip
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+WORKDIR /app
+
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 
